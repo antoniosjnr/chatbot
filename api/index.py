@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    data = json.loads(request.json)
+    data = json.loads(request.data)
     text = data['message']
 
     rules = {
