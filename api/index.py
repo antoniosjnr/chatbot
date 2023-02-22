@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = json.loads(request.json)
-    text = data['message']['text']
+    text = data['message']
 
     rules = {
         'oi': ['Olá!', 'Oi!'],
@@ -22,4 +22,4 @@ def webhook():
 
     chatbot = Chat(rules, reflections)
 
-    return chatbot.respond(text)
+    return text
