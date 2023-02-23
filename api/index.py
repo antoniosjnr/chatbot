@@ -20,20 +20,10 @@ def getRules():
         rules.append([x['pergunta'], x['respostas']])
     return rules
 
-
-pairs = getRules()
-chatbot = Chat(pairs, reflections)
-
-@app.route('/refreshChatBot', methods=['GET'])
-def refreshChatBot():
-    global pairs
-    pairs = getRules()
-    global chatbot
-    chatbot = Chat(pairs, reflections)
-    return 'ok'
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    pairs = getRules()
+    chatbot = Chat(pairs, reflections)
     textoMensagem = request.json['message']['text'].lower()
     chatId = request.json['message']['chat']['id']
     resposta = chatbot.respond(textoMensagem)
