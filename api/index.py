@@ -13,12 +13,11 @@ def webhook():
     textoMensagem = request.json['message']['text'].lower()
     chatId = request.json['message']['chat']['id']
     rules = {
-        'oi': ['Olá!', 'Oi!'],
-        'como você está?': ['Estou bem, obrigado!', 'Estou ótimo, e você?'],
-        'eu estou bem': ['Que bom ouvir isso!', 'Ótimo!'],
-        'o que você pode fazer?': ['Posso responder perguntas sobre nossos produtos e serviços.',
-                                   'Posso ajudá-lo com qualquer dúvida que você tiver sobre nossos produtos e serviços.'],
-        'adeus': ['Até mais!', 'Tchau!']
+        'oi': ['Olá!'],
+        'como você está?': ['Estou bem, obrigado!'],
+        'eu estou bem': ['Que bom ouvir isso!'],
+        'o que você pode fazer?': ['Posso responder perguntas sobre nossos produtos e serviços.'],
+        'adeus': ['Até mais!']
     }
     chatbot = Chat(rules, reflections)
     resposta = chatbot.respond(textoMensagem)
