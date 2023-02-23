@@ -25,3 +25,4 @@ def webhook():
     resposta = chatbot.respond(textoMensagem)
     urlCompleta = "https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}&parse_mode=html".format(BOT_TOKEN,chatId,resposta)
     requests.post(urlCompleta)
+    return 'ok'
