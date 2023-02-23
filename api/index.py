@@ -9,7 +9,7 @@ app = Flask(__name__)
 BOT_TOKEN = "6180542426:AAFsMzPGAQShjGwwhqd-MLTXqYzIV44Fh2c"
 
 pairs = [
-    ['meu nome é (.*)', ['Olá ! % 1']],
+    ['meu nome é (.*)', ['Olá %1!']],
     ['(oi|olá|ola|dai|eai)', ['E ai mano! !', 'Opa!', 'Olá!']],
     ['(.*) seu nome?', ['Meu nome é AntonioTesteBot']],
     ['(.*) o que você faz?', ['Sou apenas um bot para testes!']],
