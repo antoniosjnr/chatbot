@@ -12,8 +12,8 @@ pairs = [
     ['meu nome é (.*)', ['Olá %1!']],
     ['(oi|olá|ola|dai|eai)', ['E ai mano! !', 'Opa!', 'Olá!']],
     ['(.*) seu nome?', ['Meu nome é AntonioTesteBot']],
-    ['(.*) o que você faz?', ['Sou apenas um bot para testes!']],
-    ['(.*) quem te criou?', ['O Antônio está me ensinando a responder perguntas']]
+    ['(.*) que você faz?', ['Sou apenas um bot para testes!']],
+    ['(.*) te criou?', ['O Antônio está me ensinando a responder perguntas']]
 ]
 
 chatbot = Chat(pairs, reflections)
