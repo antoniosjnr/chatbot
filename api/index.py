@@ -7,7 +7,6 @@ import requests
 app = Flask(__name__)
 
 BOT_TOKEN = "6180542426:AAFsMzPGAQShjGwwhqd-MLTXqYzIV44Fh2c"
-URL_BASE = "https://api.telegram.org/bot"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
