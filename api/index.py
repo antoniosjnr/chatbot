@@ -8,15 +8,15 @@ app = Flask(__name__)
 
 BOT_TOKEN = "6180542426:AAFsMzPGAQShjGwwhqd-MLTXqYzIV44Fh2c"
 
-rules = {
-        'oi': ['Olá!', 'Oi!'],
-        'como você está?': ['Estou bem, obrigado!', 'Estou ótimo, e você?'],
-        'eu estou bem': ['Que bom ouvir isso!', 'Ótimo!'],
-        'o que você pode fazer?': ['Posso responder perguntas sobre nossos produtos e serviços.',
-                                   'Posso ajudá-lo com qualquer dúvida que você tiver sobre nossos produtos e serviços.'],
-        'adeus': ['Até mais!', 'Tchau!']
-    }
-chatbot = Chat(rules, reflections)
+pairs = [
+    ['meu nome é (.*)', ['Olá ! % 1']],
+    ['(oi|olá|ola|dai|eai)', ['E ai mano! !', 'Opa!', 'Olá!']],
+    ['(.*) seu nome?', ['Meu nome é AntonioTesteBot']],
+    ['(.*) o que você faz?', ['Sou apenas um bot para testes!']],
+    ['(.*) quem te criou?', ['O Antônio está me ensinando a responder perguntas']]
+]
+
+chatbot = Chat(pairs, reflections)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
