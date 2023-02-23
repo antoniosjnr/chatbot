@@ -6,6 +6,11 @@ import pymongo
 
 app = Flask(__name__)
 
+def getMongoCollection():
+    mongoClient = pymongo.MongoClient(os.environ['MONGODB_URI'])
+    mongoDatabase = mongoClient[os.environ['DATABASE_NAME']]
+    return mongoDatabase[os.environ['RULES_COLLECTION']]
+
 def getRules():
     querySearch = {"token": os.environ['BOT_TOKEN']}
     mongoCol = getMongoCollection()
@@ -17,8 +22,15 @@ def getRules():
 
 
 pairs = getRules()
-
 chatbot = Chat(pairs, reflections)
+
+@app.route('/refreshChatBot', methods=['GET'])
+def refreshChatBot():
+    global pairs
+    pairs = getRules()
+    global chatbot
+    chatbot = Chat(pairs, reflections)
+    return 'ok'
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -33,8 +45,4 @@ def webhook():
 def insertRule():
     mongoCol = getMongoCollection()
     mongoCol.insert_one(request.json)
-
-def getMongoCollection():
-    mongoClient = pymongo.MongoClient(os.environ['MONGODB_URI'])
-    mongoDatabase = mongoClient[os.environ['DATABASE_NAME']]
-    return mongoDatabase[os.environ['RULES_COLLECTION']]
+    return 'ok'
