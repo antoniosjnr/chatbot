@@ -8,4 +8,4 @@ app = Flask(__name__)
 def webhook():
     data = json.loads(str(request.json, encoding='utf-8'))
 
-    return data['message']['text']
+    return request.json['message']['text']
