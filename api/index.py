@@ -38,5 +38,5 @@ def insertRule():
     return 'ok'
 
 @app.route('/testes', methods=['GET'])
-def insertRule():
+def testes():
     return os.environ['BOT_TOKEN'] + '///' + os.environ['MONGODB_URI'] + '///' + os.environ['DATABASE_NAME'] + '///' + os.environ['RULES_COLLECTION'] + '///'
